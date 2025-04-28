@@ -1,0 +1,30 @@
+delays:
+  repeat_delay: 0.2       # Segundos entre repeticiones individuales
+  hold_threshold: 0.5     # Segundos para distinguir pulsación corta o larga
+
+buttons:
+  driver_up:
+    pin: 17
+    key: Up
+  driver_down:
+    pin: 27
+    key: Down
+  passenger_up:
+    pin: 22
+    key: Left
+  passenger_down:
+    pin: 23
+    key: Right
+
+combinations:
+  short:
+    driver_up+passenger_up: ctrl+Left
+    driver_down+passenger_down: ctrl+Right
+    driver_up+driver_down: Return
+    passenger_up+passenger_down: Escape
+
+  long:
+    driver_up+passenger_up: ctrl+shift+Left
+    driver_down+passenger_down: ctrl+shift+Right
+    driver_up+driver_down: Shift+Return
+    passenger_up+passenger_down: Shift+Escape

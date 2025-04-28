@@ -1,0 +1,129 @@
+🕹️ Raspberry Pi GPIO External Controller
+Un pequeño sistema para usar interruptores externos (switches) conectados a los GPIO de una Raspberry Pi como un teclado virtual que emula pulsaciones de teclado estándar.
+
+📦 Contenido
+Python script que gestiona pulsaciones, combinaciones y tiempos.
+
+Archivo config.yaml para definir toda la configuración (GPIOs, teclas, combinaciones, tiempos).
+
+Sistema modular: todo configurable sin tocar el código.
+
+📋 ¿Cómo funciona?
+Pulsas un botón ➔ se emula una tecla (por ejemplo: flecha Up).
+
+Pulsas dos botones a la vez ➔ se emula una combinación especial (por ejemplo: ctrl+Left).
+
+Si mantienes dos botones pulsados ➔ se envía una combinación distinta (por ejemplo: ctrl+shift+Left).
+
+Si mantienes pulsado un solo botón ➔ repite su tecla cada cierto tiempo (repeat_delay).
+
+🛠️ Instalación
+Instala dependencias:
+
+bash
+Copiar
+Editar
+sudo apt-get install xdotool
+pip install gpiozero pyyaml
+Copia los archivos:
+
+bash
+Copiar
+Editar
+- controller.py    # (el script principal)
+- config.yaml      # (archivo de configuración)
+Ejecuta el script:
+
+bash
+Copiar
+Editar
+python3 controller.py
+(o haz que arranque automáticamente con el sistema, ver más abajo)
+
+⚙️ Configuración (config.yaml)
+Ejemplo de configuración:
+
+yaml
+Copiar
+Editar
+delays:
+  repeat_delay: 0.2
+  hold_threshold: 0.5
+
+buttons:
+  driver_up:
+    pin: 17
+    key: Up
+  driver_down:
+    pin: 27
+    key: Down
+  passenger_up:
+    pin: 22
+    key: Left
+  passenger_down:
+    pin: 23
+    key: Right
+
+combinations:
+  short:
+    driver_up+passenger_up: ctrl+Left
+    driver_down+passenger_down: ctrl+Right
+    driver_up+driver_down: Return
+    passenger_up+passenger_down: Escape
+
+  long:
+    driver_up+passenger_up: ctrl+shift+Left
+    driver_down+passenger_down: ctrl+shift+Right
+    driver_up+driver_down: Shift+Return
+    passenger_up+passenger_down: Shift+Escape
+📌 Explicación:
+delays:
+
+repeat_delay: Tiempo entre repeticiones de un solo botón pulsado (en segundos).
+
+hold_threshold: Tiempo para considerar una combinación como "mantener pulsado" (en segundos).
+
+buttons:
+
+Cada botón tiene:
+
+pin: Número de pin GPIO al que está conectado.
+
+key: Tecla que emula cuando se pulsa solo.
+
+combinations:
+
+short: Qué combinación enviar si pulsas dos botones brevemente.
+
+long: Qué combinación enviar si mantienes dos botones pulsados.
+
+🚀 Auto-inicio al arrancar la Raspberry
+Si quieres que el script se ejecute automáticamente al arrancar:
+
+Edita tu crontab:
+
+bash
+Copiar
+Editar
+crontab -e
+Añade al final:
+
+bash
+Copiar
+Editar
+@reboot python3 /ruta/a/controller.py &
+📈 Extensión futura
+Soporte para múltiples perfiles (config_carplay.yaml, config_gaming.yaml, etc).
+
+Cambiar de perfil dinámicamente con un interruptor adicional.
+
+Añadir soporte para más tipos de eventos (mouse, multimedia, etc).
+
+🔥 Requisitos
+Raspberry Pi OS (Debian based).
+
+Python 3.
+
+gpiozero, xdotool, pyyaml.
+
+# nbmx5-carplay
