@@ -48,3 +48,14 @@ Guarda y cierra. El script se ejecutará automáticamente cada vez que la Raspbe
 
 - Asegúrate de que el script tenga permisos de ejecución.
 - Verifica la ruta del archivo `controller.py` según dónde lo coloques.
+
+<img width="995" height="880" alt="image" src="https://github.com/user-attachments/assets/dff9f4d0-f614-4791-a71d-0fb8072e10b2" />
+
+
+
+<img width="1176" height="806" alt="image" src="https://github.com/user-attachments/assets/5fe00806-baef-48d8-850a-18d5c9bdd571" />
+
+
+<img width="1343" height="611" alt="image" src="https://github.com/user-attachments/assets/1585c820-f7c0-47f3-b4a9-0989a5ce8958" />
+
+
