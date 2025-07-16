@@ -5,26 +5,26 @@ delays:
 buttons:
   driver_up:
     pin: 17
-    key: Up
+    key: q
   driver_down:
     pin: 27
-    key: Down
+    key: w
   passenger_up:
     pin: 22
-    key: Left
+    key: e
   passenger_down:
     pin: 23
-    key: Right
+    key: r
 
 combinations:
   short:
-    driver_up+passenger_up: ctrl+Left
-    driver_down+passenger_down: ctrl+Right
-    driver_up+driver_down: Return
-    passenger_up+passenger_down: Escape
+    driver_up+passenger_up: a
+    driver_down+passenger_down: s
+    driver_up+driver_down: d
+    passenger_up+passenger_down: f
 
   long:
-    driver_up+passenger_up: ctrl+shift+Left
-    driver_down+passenger_down: ctrl+shift+Right
-    driver_up+driver_down: Shift+Return
-    passenger_up+passenger_down: Shift+Escape
+    driver_up+passenger_up: z
+    driver_down+passenger_down: x
+    driver_up+driver_down: c
+    passenger_up+passenger_down: v
