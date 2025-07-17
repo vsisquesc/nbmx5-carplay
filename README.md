@@ -3,6 +3,54 @@
 
 Este proyecto permite usar interruptores conectados a los pines GPIO de una Raspberry Pi para emular pulsaciones de teclado.
 
+0º partir de raspbian lite
+
+
+1º Clonar React carplay
+2º instalar openbox
+```bash
+   sudo apt install --no-install-recommends xserver-xorg xinit openbox chromium-browser
+```
+3º  Crear fichero .xinitrc
+```bash
+    nano ~/.xinitrc
+```
+4º Definir acciones a ejecutar cuando se lanza  ```startx```
+```bash
+    openbox &
+    exec ~/apps/Carplay.AppImage --no-sandbox > ~/logs/Carplay.appimage.electron.log 2>&1
+```
+5º  Crear fichero .bash_profile
+```bash
+    nano ~/.bash_profile
+```
+6º Definir acciones a ejecutar cuando se lanza  ```startx```
+```bash
+   if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        startx -- -nocursor
+   fi
+```
+7º Habilitar login automatico creando el fichero   ```/etc/systemd/system/getty@tty1.service.d/autologin.conf ``` y dandole el siguiente valor
+```
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin user --noclear %I $TERM
+
+```
+
+8º soldar boton a los pines GPIO3 y ground
+9º añadir esto al final de ```/boot/firmware/config.txt```
+```bash
+   [all]
+   #power button
+   dtoverlay=gpio-shutdown, gpio_pin=3
+```
+10º Conectar los cables del controlador de ventana a los pines
+
+
+
+
+
 ## Requisitos
 
 - Raspberry Pi OS
@@ -57,5 +105,6 @@ Guarda y cierra. El script se ejecutará automáticamente cada vez que la Raspbe
 
 
 <img width="1343" height="611" alt="image" src="https://github.com/user-attachments/assets/1585c820-f7c0-47f3-b4a9-0989a5ce8958" />
+
 
 
