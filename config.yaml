@@ -1,30 +1,64 @@
-delays:
+
+settings:
   repeat_delay: 0.2       # Segundos entre repeticiones individuales
-  hold_threshold: 0.5     # Segundos para distinguir pulsación corta o larga
+  pull_up: False
+  bounce_time: 0.0625
+  hold_time: 1 
+  hold_repeat: False
 
 buttons:
   driver_up:
-    pin: 17
-    key: q
+    pin: 26 
   driver_down:
-    pin: 27
-    key: w
+    pin: 20 
   passenger_up:
-    pin: 22
-    key: e
+    pin: 19 
   passenger_down:
-    pin: 23
-    key: r
+    pin: 16 
 
-combinations:
-  short:
-    driver_up+passenger_up: a
-    driver_down+passenger_down: s
-    driver_up+driver_down: d
-    passenger_up+passenger_down: f
+# Acciones según combinaciones (máscaras)
+# bit 1 -> drivers_up
+# bit 2 -> drivers_down
+# bit 3 -> passenger_up
+# bit 4 -> passenger_down
+# bit 5 -> is held
+outputs:
+  0b00000: null
+  0b00001: q
+  0b00010: w
+  0b00011: null
 
-  long:
-    driver_up+passenger_up: z
-    driver_down+passenger_down: x
-    driver_up+driver_down: c
-    passenger_up+passenger_down: v
+  0b00100: e
+  0b00101: a
+  0b00110: d
+  0b00111: null
+
+  0b01000: r
+  0b01001: s
+  0b01010: f
+  0b01011: null
+
+  0b01100: null
+  0b01101: null
+  0b01110: null
+  0b01111: null
+  # HELD
+  0b10000: null
+  0b10001: Q
+  0b10010: W
+  0b10011: null
+
+  0b10100: E
+  0b10101: A
+  0b10110: D
+  0b10111: null
+
+  0b11000: R
+  0b11001: S
+  0b11010: F
+  0b11011: null
+
+  0b11100: null
+  0b11101: null
+  0b11110: null
+  0b11111: null
