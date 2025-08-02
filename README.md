@@ -47,6 +47,18 @@ ExecStart=-/sbin/agetty --autologin user --noclear %I $TERM
 ```
 10º Conectar los cables del controlador de ventana a los pines
 
+11º Crear reglas para el modulo kernel uinput
+
+```bash
+sudo nano /etc/udev/rules.d/99-uinput.rules
+```
+El contenido del fichero debe ser
+```
+KERNEL=="uinput", MODE="0666"
+```
+
+
+
 
 
 
