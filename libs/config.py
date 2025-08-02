@@ -16,15 +16,18 @@ hold_repeat = config["settings"]["hold_repeat"]
 repeat_delay = config['settings']['repeat_delay']
 
 buttons = {}
-for name, info in config['buttons'].items():
-    buttons[name] = Button(info['pin'], pull_up=pull_up, bounce_time=bounce_time, hold_time=hold_time, hold_repeat=hold_repeat)
+for name, pin in config['gpio'].items():
+    buttons[name] = Button(
+        pin, 
+        pull_up=pull_up, 
+        bounce_time=bounce_time,
+        hold_time=hold_time, 
+        hold_repeat=hold_repeat
+    )
 
 
 
-outputs = {}
-for key, value in config["outputs"].items():
-    outputs[key] = value
-    
-    
-all_chars = [char for char in set(outputs.values()) if char is not None] 
-    
+inputs = config["inputs"]
+mappings = config["mappings"]
+actions = config["actions"]
+custom_actions = config["custom_actions"]

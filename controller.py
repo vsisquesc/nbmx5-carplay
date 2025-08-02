@@ -3,13 +3,12 @@ import time
 
 import libs.config
 import libs.uinput
+import libs.actions
 
 
 # configuración
 buttons = libs.config.buttons
-outputs = libs.config.outputs
-all_chars = libs.config.all_chars
-device = libs.uinput.build_device(all_chars)
+device = libs.uinput.build_device(libs.config.actions)
         
 # globales
 LAST_EXEC_TIME = 0
@@ -38,9 +37,17 @@ def dispatchFunction(held = False):
     
     now = time.monotonic()
     currMask = held << 4 | MASK
-    if currMask in outputs and outputs[currMask]!= None:
-        key = outputs[currMask]
-        libs.uinput.type_char(device, key)
+    if currMask in libs.config.inputs and libs.config.inputs[currMask]!= None:
+        mapping = libs.config.inputs[currMask]
+        action = libs.actions.get_action(mapping)
+        if action == None:
+            return
+ 
+        key = libs.config.actions[action]
+        print("mapping",mapping)
+        print("action",action)
+        print("key",key)
+        # libs.uinput.type_char(device, key)
         LAST_EXEC_TIME = now
         MASK = 0
         

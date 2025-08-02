@@ -19,7 +19,9 @@ def type_char(device, char):
 
  
  
-def build_device(chars):
+def build_device(actions):
+    
+    chars = set(actions.values())
     # Construir lista de códigos necesarios
     uinput_keys = [uinput.KEY_LEFTSHIFT]  # por si hay mayúsculas
     for char in chars:

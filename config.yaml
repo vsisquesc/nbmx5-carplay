@@ -6,15 +6,11 @@ settings:
   hold_time: 1 
   hold_repeat: False
 
-buttons:
-  driver_up:
-    pin: 26 
-  driver_down:
-    pin: 20 
-  passenger_up:
-    pin: 19 
-  passenger_down:
-    pin: 16 
+gpio:
+  driver_up: 26 
+  driver_down: 20 
+  passenger_up: 19 
+  passenger_down: 16 
 
 # Acciones según combinaciones (máscaras)
 # bit 1 -> drivers_up
@@ -22,43 +18,63 @@ buttons:
 # bit 3 -> passenger_up
 # bit 4 -> passenger_down
 # bit 5 -> is held
-outputs:
-  0b00000: null
-  0b00001: q
-  0b00010: w
-  0b00011: null
+inputs:
+  0b00001: DU
+  0b00010: DD
+  0b00100: PU
+  0b01000: PD
 
-  0b00100: e
-  0b00101: a
-  0b00110: d
-  0b00111: null
+  0b00101: DU+PU
+  0b00110: DD+PU
+  0b01001: DU+PD
+  0b01010: DD+PD
 
-  0b01000: r
-  0b01001: s
-  0b01010: f
-  0b01011: null
-
-  0b01100: null
-  0b01101: null
-  0b01110: null
-  0b01111: null
   # HELD
-  0b10000: null
-  0b10001: Q
-  0b10010: W
-  0b10011: null
+  0b10001: H_DU
+  0b10010: H_DD
+  0b10100: H_PU
+  0b11000: H_PD
 
-  0b10100: E
-  0b10101: A
-  0b10110: D
-  0b10111: null
+  0b10101: H_DU+PU
+  0b10110: H_DD+PU
+  0b11001: H_DU+PD
+  0b11010: H_DD+PD
+ 
 
-  0b11000: R
-  0b11001: S
-  0b11010: F
-  0b11011: null
+## Este es innecesario pero da claridad a los mapeos
+mappings:
+  DU: next
+  DD: prev
+  PU: right
+  PD: left
+ 
+  DU+PU: home
+  DD+PU: null
+  DU+PD: null
+  DD+PD: null 
+  
+  H_DU: toggle
+  H_DD: toggle
+  H_PU: back
+  H_PD: selectDown
+ 
+  H_DU+PU: null
+  H_DD+PU: null
+  H_DU+PD: null
+  H_DD+PD: null
 
-  0b11100: null
-  0b11101: null
-  0b11110: null
-  0b11111: null
+custom_actions:
+  toggle: play_pause
+
+actions:
+  left: 'LEFT'
+  right: 'RIGHT'
+  selectDown: 'SPACE'
+  back: 'BACKSPACE'
+  down: 'DOWN' # No utilizado
+  home: 'H'
+  play: 'P'
+  pause: 'O'
+  next: 'M'
+  prev: 'N'
+
