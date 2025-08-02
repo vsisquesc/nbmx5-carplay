@@ -87,8 +87,6 @@ crontab -e
 2. Añade esta línea al final (ajustando la ruta):
 
 ```bash
-@reboot python3 /home/pi/gpio-controller/controller.py &
-```
 
 Guarda y cierra. El script se ejecutará automáticamente cada vez que la Raspberry Pi arranque.
 
