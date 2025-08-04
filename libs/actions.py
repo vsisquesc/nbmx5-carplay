@@ -1,4 +1,3 @@
-import yaml
 import libs.config
 
 def get_action(mapping):

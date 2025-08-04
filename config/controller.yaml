@@ -1,17 +1,3 @@
-
-settings:
-  repeat_delay: 0.2       # Segundos entre repeticiones individuales
-  pull_up: False
-  bounce_time: 0.0625
-  hold_time: 1 
-  hold_repeat: False
-
-gpio:
-  driver_up: 26 
-  driver_down: 20 
-  passenger_up: 19 
-  passenger_down: 16 
-
 # Acciones según combinaciones (máscaras)
 # bit 1 -> drivers_up
 # bit 2 -> drivers_down
@@ -53,8 +39,8 @@ mappings:
   DU+PD: null
   DD+PD: null 
   
-  H_DU: toggle
-  H_DD: toggle
+  H_DU: toggle_playPause
+  H_DD: toggle_playPause
   H_PU: back
   H_PD: selectDown
  
@@ -64,7 +50,7 @@ mappings:
   H_DD+PD: null
 
 custom_actions:
-  toggle: play_pause
+  toggle_playPause: play_pause
 
 actions:
   left: 'LEFT'

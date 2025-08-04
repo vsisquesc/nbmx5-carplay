@@ -1,0 +1,11 @@
+repeat_delay: 0.2       # Segundos entre repeticiones individuales
+pull_up: False
+bounce_time: 0.0625
+hold_time: 0.5 
+hold_repeat: False
+
+gpio:
+  driver_up: 26 
+  driver_down: 20 
+  passenger_up: 19 
+  passenger_down: 16 

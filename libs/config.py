@@ -4,19 +4,23 @@ from gpiozero import Button
 
 
 path = sys.path[0]
-with open(path+'/config.yaml', 'r') as f:
-    config = yaml.safe_load(f)
+with open(path+'/config/settings.yaml', 'r') as f:
+    settings = yaml.safe_load(f)
+    
+with open(path+'/config/controller.yaml', 'r') as f:
+    controller = yaml.safe_load(f)
+
 
  
     
-pull_up = config["settings"]["pull_up"]
-bounce_time = config["settings"]["bounce_time"]
-hold_time = config["settings"]["hold_time"]
-hold_repeat = config["settings"]["hold_repeat"]
-repeat_delay = config['settings']['repeat_delay']
+pull_up = settings["pull_up"]
+bounce_time = settings["bounce_time"]
+hold_time = settings["hold_time"]
+hold_repeat = settings["hold_repeat"]
+repeat_delay = settings['repeat_delay']
 
 buttons = {}
-for name, pin in config['gpio'].items():
+for name, pin in settings['gpio'].items():
     buttons[name] = Button(
         pin, 
         pull_up=pull_up, 
@@ -27,7 +31,7 @@ for name, pin in config['gpio'].items():
 
 
 
-inputs = config["inputs"]
-mappings = config["mappings"]
-actions = config["actions"]
-custom_actions = config["custom_actions"]
+inputs = controller["inputs"]
+mappings = controller["mappings"]
+actions = controller["actions"]
+custom_actions = controller["custom_actions"]

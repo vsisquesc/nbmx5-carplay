@@ -39,15 +39,14 @@ def dispatchFunction(held = False):
     currMask = held << 4 | MASK
     if currMask in libs.config.inputs and libs.config.inputs[currMask]!= None:
         mapping = libs.config.inputs[currMask]
-        action = libs.actions.get_action(mapping)
-        if action == None:
-            return
- 
-        key = libs.config.actions[action]
         print("mapping",mapping)
+        action = libs.actions.get_action(mapping)
         print("action",action)
-        print("key",key)
-        # libs.uinput.type_char(device, key)
+        if action != None:
+            key = libs.config.actions[action]
+            print("key",key)
+            libs.uinput.type_char(device, key)
+ 
         LAST_EXEC_TIME = now
         MASK = 0
         
