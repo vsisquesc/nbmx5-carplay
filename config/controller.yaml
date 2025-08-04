@@ -44,7 +44,7 @@ mappings:
   H_PU: back
   H_PD: selectDown
  
-  H_DU+PU: null
+  H_DU+PU: home
   H_DD+PU: null
   H_DU+PD: null
   H_DD+PD: null
