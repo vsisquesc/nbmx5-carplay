@@ -17,7 +17,6 @@ pull_up = settings["pull_up"]
 bounce_time = settings["bounce_time"]
 hold_time = settings["hold_time"]
 hold_repeat = settings["hold_repeat"]
-repeat_delay = settings['repeat_delay']
 
 buttons = {}
 for name, pin in settings['gpio'].items():

@@ -1,7 +1,6 @@
-repeat_delay: 0.2       # Segundos entre repeticiones individuales
 pull_up: False
 bounce_time: 0.0625
-hold_time: 0.5 
+hold_time: 0.8 
 hold_repeat: False
 
 gpio:
